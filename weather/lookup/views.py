@@ -52,7 +52,11 @@ def home(request):
 			api = json.loads(api_request.content)
 		except Exception as e:
 			api = "Error..."
-
+		try:
+			api = json.loads(api_request.content)
+		except IndexError as e:
+			api = "Error..."
+			
 		if api[0]['Category']['Name'] == "Good":
 			category_description = "(0 to 50) Air quality is considered satisfactory, and air pollution poses little or no risk."
 			category_color = "good"
